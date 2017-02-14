@@ -1,7 +1,12 @@
 # Simple ICal Exporter library
 requires Twig templating engine to render ICS files.
 
-### Usage:
+#### Installation:
+```shell
+composer require acrnogor/ical-exporter
+```
+
+#### Usage:
 
 ```php
 // first, we need Twig environement
@@ -16,7 +21,7 @@ $icalExporter = new ICalExporter($twig);
 $ice->downloadAsICal($items, $filename);
 ```
 
-### Or, if you just want ICS body as string/text:
+#### Or, if you just want ICS body as string/text:
 
 ```php
 // you an either repeat Twig part or just use Dependency Injection (i.e. in Symfony) to inject twig to the class, then fetch it as a service
@@ -28,5 +33,8 @@ $icsText = $ice->getICalDataAsString($items);
 echo $icsText;
 ```
 
-### Todo: 
+#### Todo: 
 - maybe implement a non twig version? Meh...
+
+#### On packagist:
+https://packagist.org/packages/acrnogor/ical-exporter

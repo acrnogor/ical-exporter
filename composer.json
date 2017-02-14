@@ -1,0 +1,16 @@
+{
+    "name": "acrnogor/ical-exporter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ante Crnogorac",
+            "email": "ante.crnogorac@gmail.com",
+            "homepage": "http://github.com/acrnogor",
+            "role": "developer"
+        }
+    ],
+    "require": {
+        "twig/twig": "~2.0",
+        "ramsey/uuid": "^3.5"
+    }
+}

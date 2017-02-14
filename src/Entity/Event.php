@@ -10,7 +10,7 @@ use Ramsey\Uuid\Uuid;
  *
  * @package ICalExporter\Entity
  */
-class Event
+class Event implements ICalExporterInterface
 {
     public $startDate;
     public $endDate;
@@ -23,8 +23,9 @@ class Event
     /**
      * @param $uuid
      * @throws \InvalidArgumentException when invalid Uuid given
+     * @return Event
      */
-    public function setUuid($uuid)
+    public function setUuid(string $uuid)
     {
         if (!Uuid::isValid($uuid)) {
             throw new \InvalidArgumentException(sprintf('Unable to set Uuid, invalid Uuid given (%s)', $uuid));

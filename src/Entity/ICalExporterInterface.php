@@ -17,7 +17,7 @@ interface ICalExporterInterface
 
     /**
      * @param string $uuid
-     * @return mixed
+     * @return self
      */
     public function setUuid(string $uuid);
 

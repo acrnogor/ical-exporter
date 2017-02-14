@@ -2,7 +2,7 @@
     "name": "acrnogor/ical-exporter",
     "license": "MIT",
     "minimum-stability": "dev",
-    "prefer-stable": true,
+    "prefer-stable": false,
     "authors": [
         {
             "name": "Ante Crnogorac",

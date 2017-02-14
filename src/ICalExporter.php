@@ -2,8 +2,8 @@
 
 namespace Acrnogor\ICalExporter;
 
-use Twig_Environment;
 use Acrnogor\ICalExporter\Entity\ICalExporterInterface;
+use Twig_Environment;
 
 class ICalExporter
 {
@@ -13,7 +13,6 @@ class ICalExporter
      */
     public function __construct(Twig_Environment $twig)
     {
-        $twig->getLoader()->addPath(__DIR__ .'/View');
         $this->twig = $twig;
     }
 
@@ -22,12 +21,11 @@ class ICalExporter
      *  - will not download file
      *
      * @param array $iCalItems
+     * @throws \InvalidArgumentException when array contains items that do not implement the right interface
      * @return string
      */
     public function getICalDataAsString(array $iCalItems)
     {
-        $icsBody = '';
-
         // verify all items are importing the correct interface
         foreach ($iCalItems as $iCalItem) {
             if ( !($iCalItem instanceof ICalExporterInterface) ) {
@@ -35,13 +33,10 @@ class ICalExporter
             }
         }
 
-        try {
-            $icsBody = $this->twig->render('ical-template.twig', [
-                'items' => $iCalItems
-            ]);
-        } catch (\Exception $e) {
-            // fuck off :-)
-        }
+        $icsBody = $this->twig->render('ical-template.twig', [
+            'items' => $iCalItems
+        ]);
+
         return $icsBody;
     }
 

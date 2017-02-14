@@ -1,13 +1,13 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//maxbrain/test//NONSGML v1.0//EN
+PRODID:-//acrnogor/icalexporter//NONSGML v1.0//EN
 CALSCALE:GREGORIAN
 {% if items %}
 {% for item in items %}
 BEGIN:VEVENT
 DTSTAMP:{{ "now"|date("Ymd\\THis\\Z") }}
 DTSTART:{{ item.startDate|date("Ymd\\THis\\Z") }}
-DTEND:{{ item.dateEnd|date("Ymd\\THis\\Z") }}
+DTEND:{{ item.endDate|date("Ymd\\THis\\Z") }}
 UID:{{ item.uuid }}
 DESCRIPTION:{{ item.description }}
 URL;VALUE=URI:{{ item.url }}

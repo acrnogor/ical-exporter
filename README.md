@@ -33,6 +33,21 @@ $icsText = $ice->getICalDataAsString($items);
 echo $icsText;
 ```
 
+#### Symfony 3.0+ usage
+
+Add ICalExporter to your Symfony project via composer install. Then, define a Symfony service in your services.yml:
+```yaml
+ical_exporter:
+    class: Acrnogor\ICalExporter\ICalExporter
+    arguments: ["@twig"]
+```
+then you can use this service in your controller like zis:
+```php
+$icalExporter = $this->get('ical_exporter');
+$icalExporter->downloadAsICal($events, 'give-some-filename.ics');
+```
+    
+
 #### Todo: 
 - maybe implement a non twig version? Meh...
 

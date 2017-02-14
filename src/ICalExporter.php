@@ -3,7 +3,7 @@
 namespace Acrnogor\ICalExporter;
 
 use Twig_Environment;
-use ICalExporter\Entity\ICalExporterInterface;
+use Acrnogor\ICalExporter\Entity\ICalExporterInterface;
 
 class ICalExporter
 {

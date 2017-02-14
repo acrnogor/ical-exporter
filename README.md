@@ -1,4 +1,4 @@
-Simple ICal Exporter library
+*** Simple ICal Exporter library ***
  - requires Twig templating engine to render ICS files
 Usage:
 

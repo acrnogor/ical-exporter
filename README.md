@@ -41,6 +41,14 @@ ical_exporter:
     class: Acrnogor\ICalExporter\ICalExporter
     arguments: ["@twig"]
 ```
+and then register template path in twig configuration in config.yml:
+```yaml
+twig:
+    paths:
+        '%kernel.root_dir%/../vendor/acrnogor/ical-exporter/src/View/': ~
+```
+
+
 then you can use this service in your controller like zis:
 ```php
 $icalExporter = $this->get('ical_exporter');

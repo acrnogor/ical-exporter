@@ -1,18 +1,17 @@
 {
     "name": "acrnogor/ical-exporter",
+    "description": "Simple ICal Export library",
+    "type": "library",
+    "require": {
+        "ramsey/uuid": "^3.5",
+        "twig/twig": "^2.1"
+    },
     "license": "MIT",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "authors": [
         {
             "name": "Ante Crnogorac",
-            "email": "ante.crnogorac@gmail.com",
-            "homepage": "http://github.com/acrnogor",
-            "role": "developer"
+            "email": "ante.crnogorac@gmail.com"
         }
     ],
-    "require": {
-        "twig/twig": "~2.0",
-        "ramsey/uuid": "^3.5"
-    }
+    "minimum-stability": "dev"
 }

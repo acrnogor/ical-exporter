@@ -17,6 +17,13 @@ class ICalExporter
         $this->twig = $twig;
     }
 
+    /**
+     * Get ICal data as string only
+     *  - will not download file
+     *
+     * @param array $iCalItems
+     * @return string
+     */
     public function getICalDataAsString(array $iCalItems)
     {
         $icsBody = '';
@@ -39,12 +46,12 @@ class ICalExporter
     }
 
     /**
-     * Download data in Ical format
+     * Download data in ICal format
      * @param ICalExporterInterface[] $iCalItems
      * @param string $filename
      * @throws \InvalidArgumentException when not all objects in array are implementing the required interface
      */
-    public function downloadAsICal(array $iCalItems, $filename)
+    public function downloadAsICal(array $iCalItems, $filename = 'calendar.ics')
     {
         $icsBody = $this->getICalDataAsString($iCalItems);
 

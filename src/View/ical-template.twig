@@ -8,7 +8,7 @@ BEGIN:VEVENT
 DTSTAMP:{{ "now"|date("Ymd\\THis\\Z") }}
 DTSTART:{{ item.startDate|date("Ymd\\THis\\Z") }}
 DTEND:{{ item.dateEnd|date("Ymd\\THis\\Z") }}
-UID:{{ item.id }}
+UID:{{ item.uuid }}
 DESCRIPTION:{{ item.description }}
 URL;VALUE=URI:{{ item.url }}
 SUMMARY:{{ item.summary }}

@@ -20,6 +20,9 @@ class Event implements ICalExporterInterface
     public $uuid;
     public $url;
 
+    /** @var Recurrence */
+    public $recurrence;
+
     /**
      * @param $uuid
      * @throws \InvalidArgumentException when invalid Uuid given
@@ -88,5 +91,13 @@ class Event implements ICalExporterInterface
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * @return Recurrence
+     */
+    public function getRecurrence()
+    {
+        return $this->recurrence;
     }
 }

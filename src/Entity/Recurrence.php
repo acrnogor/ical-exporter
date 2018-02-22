@@ -15,6 +15,7 @@ class Recurrence
      *
      * @param $frequency
      * @param $interval
+     * @throws \InvalidArgumentException
      */
     public function __construct($frequency, $interval = null)
     {

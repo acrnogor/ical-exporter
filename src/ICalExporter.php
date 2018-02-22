@@ -8,6 +8,11 @@ use Twig_Environment;
 class ICalExporter
 {
     /**
+     * @var Twig_Environment
+     */
+    private $twig;
+
+    /**
      * ICalExporter constructor.
      * @param Twig_Environment $twig
      */
@@ -21,32 +26,32 @@ class ICalExporter
      *  - will not download file
      *
      * @param array $iCalItems
-     * @throws \InvalidArgumentException when array contains items that do not implement the right interface
      * @return string
+     *
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
-    public function getICalDataAsString(array $iCalItems)
+    public function getICalDataAsString(array $iCalItems): string
     {
-        // verify all items are importing the correct interface
         foreach ($iCalItems as $iCalItem) {
             if ( !($iCalItem instanceof ICalExporterInterface) ) {
                 throw new \InvalidArgumentException('All iCalItems must implement ICalExporterInterface');
             }
         }
 
-        $icsBody = $this->twig->render('ical-template.twig', [
-            'items' => $iCalItems
-        ]);
-
-        return $icsBody;
+        return $this->twig->render('ical-template.twig', ['items' => $iCalItems]);
     }
 
     /**
      * Download data in ICal format
      * @param ICalExporterInterface[] $iCalItems
      * @param string $filename
-     * @throws \InvalidArgumentException when not all objects in array are implementing the required interface
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
-    public function downloadAsICal(array $iCalItems, $filename = 'calendar.ics')
+    public function downloadAsICal(array $iCalItems, $filename = 'calendar.ics'): void
     {
         $icsBody = $this->getICalDataAsString($iCalItems);
 

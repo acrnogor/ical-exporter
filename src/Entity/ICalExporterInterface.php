@@ -2,12 +2,6 @@
 
 namespace Acrnogor\ICalExporter\Entity;
 
-/**
- * Created by PhpStorm.
- * User: zwer
- * Date: 13.02.17.
- * Time: 14:10
- */
 interface ICalExporterInterface
 {
     /**

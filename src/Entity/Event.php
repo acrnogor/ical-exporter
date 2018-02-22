@@ -28,13 +28,14 @@ class Event implements ICalExporterInterface
      * @throws \InvalidArgumentException when invalid Uuid given
      * @return Event
      */
-    public function setUuid(string $uuid)
+    public function setUuid(string $uuid): Event
     {
         if (!Uuid::isValid($uuid)) {
             throw new \InvalidArgumentException(sprintf('Unable to set Uuid, invalid Uuid given (%s)', $uuid));
         }
 
         $this->uuid = $uuid;
+        return $this;
     }
 
     /**
@@ -86,9 +87,9 @@ class Event implements ICalExporterInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -96,7 +97,7 @@ class Event implements ICalExporterInterface
     /**
      * @return Recurrence
      */
-    public function getRecurrence()
+    public function getRecurrence(): Recurrence
     {
         return $this->recurrence;
     }

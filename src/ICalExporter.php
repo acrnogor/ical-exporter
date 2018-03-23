@@ -40,7 +40,7 @@ class ICalExporter
             }
         }
 
-        return $this->twig->render('ical-template.twig', ['items' => $iCalItems]);
+        return $this->twig->render('ical-template.twig', ['events' => $iCalItems]);
     }
 
     /**

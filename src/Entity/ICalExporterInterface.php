@@ -4,16 +4,19 @@ namespace Acrnogor\ICalExporter\Entity;
 
 interface ICalExporterInterface
 {
-    /**
-     * @return mixed
-     */
-    public function getUuid();
+    public function getUuid(): string;
 
-    /**
-     * @param string $uuid
-     * @return self
-     */
-    public function setUuid(string $uuid);
+    public function setUuid(string $uuid): ICalExporterInterface;
+
+    public function getDescription(): string;
+
+    public function getUrl(): string;
+
+    public function getLocation(): string;
+
+    public function getSummary(): string;
+
+    public function getType(): int;
 
     /**
      * Get Start Date
@@ -21,7 +24,7 @@ interface ICalExporterInterface
      *
      * @return \DateTime
      */
-    public function getStartDate();
+    public function getStartDate(): \DateTime;
 
     /**
      * Get End Date
@@ -29,25 +32,6 @@ interface ICalExporterInterface
      *
      * @return \DateTime
      */
-    public function getEndDate();
+    public function getEndDate(): \DateTime;
 
-    /**
-     * @return string
-     */
-    public function getDescription();
-
-    /**
-     * @return string
-     */
-    public function getUrl();
-
-    /**
-     * @return string
-     */
-    public function getLocation();
-
-    /**
-     * @return string
-     */
-    public function getSummary();
 }

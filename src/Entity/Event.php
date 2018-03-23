@@ -12,6 +12,9 @@ use Ramsey\Uuid\Uuid;
  */
 class Event implements ICalExporterInterface
 {
+    public const TYPE_REGULAR   = 0;
+    public const TYPE_ALL_DAY   = 1;
+
     public $startDate;
     public $endDate;
     public $location;
@@ -19,6 +22,7 @@ class Event implements ICalExporterInterface
     public $summary;
     public $uuid;
     public $url;
+    public $type = self::TYPE_REGULAR;
 
     /** @var Recurrence */
     public $recurrence;
@@ -28,7 +32,7 @@ class Event implements ICalExporterInterface
      * @throws \InvalidArgumentException when invalid Uuid given
      * @return Event
      */
-    public function setUuid(string $uuid): Event
+    public function setUuid(string $uuid): ICalExporterInterface
     {
         if (!Uuid::isValid($uuid)) {
             throw new \InvalidArgumentException(sprintf('Unable to set Uuid, invalid Uuid given (%s)', $uuid));
@@ -39,17 +43,17 @@ class Event implements ICalExporterInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getUuid()
+    public function getUuid(): string
     {
         return $this->uuid;
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
-    public function getStartDate()
+    public function getStartDate(): \DateTime
     {
         return $this->startDate;
     }
@@ -57,7 +61,7 @@ class Event implements ICalExporterInterface
     /**
      * @return mixed
      */
-    public function getEndDate()
+    public function getEndDate(): \DateTime
     {
         return $this->endDate;
     }
@@ -65,7 +69,7 @@ class Event implements ICalExporterInterface
     /**
      * @return mixed
      */
-    public function getLocation()
+    public function getLocation(): string
     {
         return $this->location;
     }
@@ -73,7 +77,7 @@ class Event implements ICalExporterInterface
     /**
      * @return mixed
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -81,7 +85,7 @@ class Event implements ICalExporterInterface
     /**
      * @return mixed
      */
-    public function getSummary()
+    public function getSummary(): string
     {
         return $this->summary;
     }
@@ -92,6 +96,14 @@ class Event implements ICalExporterInterface
     public function getUrl(): string
     {
         return $this->url;
+    }
+
+    /**
+     * @return int
+     */
+    public function getType(): int
+    {
+        return $this->type;
     }
 
     /**

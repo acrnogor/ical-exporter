@@ -5,15 +5,15 @@ CALSCALE:GREGORIAN
 {% if events %}
 {% for event in events %}
 BEGIN:VEVENT
-DTSTAMP;VALUE=DATE{{ "now"|date("Ymd\\THis\\Z", 'UTC') }}
-{% if event.type == constant('Acrnogor\ICalExporter\Entity::TYPE_ALL_DAY') %}
+DTSTAMP:{{ "now"|date("Ymd\\THis\\Z", 'UTC') }}
+{% if event.type == constant('Acrnogor\\ICalExporter\\Entity\\Event::TYPE_ALL_DAY') %}
 DTSTART;VALUE=DATE:{{ event.startDate|date("Ymd") }}
 {% else %}
 DTSTART:{{ event.startDate|date("Ymd\\THis\\Z", 'UTC') }}
 {% endif %}
 {% if event.recurrence %}RRULE:FREQ={{ event.recurrence.frequency }};{% if event.recurrence.interval %}INTERVAL={{ event.recurrence.interval }};
 {% endif %}{% endif %}
-{% if event.type == constant('Acrnogor\ICalExporter\Entity::TYPE_ALL_DAY') %}
+{% if event.type == constant('Acrnogor\\ICalExporter\\Entity\\Event::TYPE_ALL_DAY') %}
 DTEND;VALUE=DATE:{{ event.endDate|date("Ymd") }}
 {% else %}
 DTEND:{{ event.endDate|date("Ymd\\THis\\Z", 'UTC') }}
